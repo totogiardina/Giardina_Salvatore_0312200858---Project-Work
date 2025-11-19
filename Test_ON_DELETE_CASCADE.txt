@@ -1,0 +1,37 @@
+-- passeggero fittizio
+insert into passeggero (nome, cognome, email, documento_identita)
+values ('test', 'cascade', 'cascade@example.com', 'test999');
+
+select * from passeggero;
+
+-- prenotazione
+insert into prenotazione (id_passeggero, data_prenotazione)
+values (4, now());
+select * from prenotazione;
+
+
+-- biglietto
+insert into biglietto (id_prenotazione, prezzo_totale)
+values (4, 10.00);
+select * from biglietto;
+
+
+-- validazione
+insert into validazione (id_biglietto, flag_validato, data_validazione)
+values (4, 1, now());
+select * from validazione;
+
+-- prenotazione_tratta (minimo essenziale)
+insert into prenotazione_tratta (id_prenotazione, id_tratta, numero_sequenza, id_stazione_salita, id_stazione_discesa)
+values (4, 1, 1, 1, 4);
+
+select * from prenotazione_tratta;
+
+delete from passeggero where id_passeggero = 4;
+
+
+select * from passeggero;
+select * from prenotazione;
+select * from biglietto;
+select * from validazione;
+select * from prenotazione_tratta;
